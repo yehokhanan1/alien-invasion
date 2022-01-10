@@ -1,2 +1,2 @@
 # alien-invasion
-mini jogo de invasão alienígena com o pygames
+mini jogo arcade de invasão alien com o pygames
