@@ -17,20 +17,25 @@ def run_game():
     ship = Ship(ai_settings, screen)
     # Cria um grupo no qual serão armazenados os projéteis
     bullets = Group()
+    # grupo de alienigenas
+    aliens = Group()
+
+    # Cria a frota de alienigenas
+    gf.create_fleet(ai_settings, screen, ship, aliens)
 
     # define a cor de fundo
     bg_color = (230,230,230)
+
+    # Cria um alienigena
+    
 
     # Inicia o laço principal do jogo
     while True:
         # observa eventos de teclado e de mouse
         gf.check_events(ai_settings, screen, ship, bullets)
         ship.update()
-        bullets.update()
-        # Livra-se dos projéteis que desapareceram
-        for bullet in bullets.copy():
-            if bullet.rect.bottom <= 0:
-                bullets.remove(bullet)
-        gf.update_screen(ai_settings, screen, ship,bullets)
+        gf.update_bullets(bullets)
+        gf.update_screen(ai_settings, screen, ship, aliens, bullets)
+
         
 run_game()
